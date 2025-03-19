@@ -1,12 +1,12 @@
 <script setup>
 import { ref } from 'vue';
 const email = ref('');
+const subscribed = ref(false);
 const submitForm = () => {
-  // Here you can add logic to handle the form submission
-  console.log('Submitted email:', email.value);
-  // Reset the email input after submission
-  email.value = '';
-};
+    subscribed.value = true;
+    // Reset the email input after submission
+    email.value = '';
+}
 </script>
 
 <template>
@@ -26,12 +26,27 @@ const submitForm = () => {
 
         <form class="form-container" @submit.prevent="submitForm">
             <input v-model="email"  type="email" placeholder="Enter your email" class="email-input" required>
-            <button type="submit" class="submit-btn">Stay Updated!</button>
+            <button type="submit" class="submit-btn">Subscribe to continue</button>
         </form>
+        <p v-if="subscribed" class="success-message">Thanks for subscribing! Check your inbox for updates.</p>
     </div>
 </template>
 
 <style scoped>
+
+@media (max-width: 417px) {
+    .submit-btn {
+        margin-top: 10px;
+    }
+}
+
+.success-message
+{
+    color: green;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
 .text-center {
     text-align: center;
 }
