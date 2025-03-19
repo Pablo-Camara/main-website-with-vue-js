@@ -2,10 +2,26 @@
 import { ref } from 'vue';
 const email = ref('');
 const subscribed = ref(false);
+const failedSubcription = ref(false);
+const failedSubscriptionError = ref('');
+
 const submitForm = () => {
-    subscribed.value = true;
-    // Reset the email input after submission
-    email.value = '';
+    subscribed.value = false;
+    failedSubcription.value = false;
+    // fetch GET request to /api.php with email = email.value
+    fetch(`/api.php?email=${email.value}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                failedSubcription.value = true;
+                failedSubscriptionError.value = data.error;
+                return;
+            } else if (data.success) {
+                subscribed.value = true;
+                email.value = '';
+            }
+        });
+    
 }
 </script>
 
@@ -29,12 +45,13 @@ const submitForm = () => {
             <button type="submit" class="submit-btn">Subscribe to continue</button>
         </form>
         <p v-if="subscribed" class="success-message">Thanks for subscribing! Check your inbox for updates.</p>
+        <p v-if="failedSubcription" class="failed-message">{{ failedSubscriptionError }}</p>
     </div>
 </template>
 
 <style scoped>
 
-@media (max-width: 417px) {
+@media (max-width: 546px) {
     .submit-btn {
         margin-top: 10px;
     }
@@ -43,6 +60,12 @@ const submitForm = () => {
 .success-message
 {
     color: green;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.failed-message {
+    color: red;
     font-size: 16px;
     margin-top: 10px;
 }
