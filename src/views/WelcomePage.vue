@@ -4,14 +4,17 @@ const email = ref('');
 const subscribed = ref(false);
 const failedSubcription = ref(false);
 const failedSubscriptionError = ref('');
+const sendingRequest = ref(false);
 
 const submitForm = () => {
     subscribed.value = false;
     failedSubcription.value = false;
+    sendingRequest.value = true;
     // fetch GET request to /api.php with email = email.value
-    fetch(`/api.php?email=${email.value}`)
+    fetch(`/backend/subscribe.php?email=${email.value}`)
         .then(response => response.json())
         .then(data => {
+            sendingRequest.value = false;
             if (data.error) {
                 failedSubcription.value = true;
                 failedSubscriptionError.value = data.error;
@@ -44,6 +47,7 @@ const submitForm = () => {
             <input v-model="email"  type="email" placeholder="Enter your email" class="email-input" required>
             <button type="submit" class="submit-btn">Subscribe to continue</button>
         </form>
+        <p v-if="sendingRequest" class="waiting-message">Subscribing your email please ewait...</p>
         <p v-if="subscribed" class="success-message">Thanks for subscribing! Check your inbox for updates.</p>
         <p v-if="failedSubcription" class="failed-message">{{ failedSubscriptionError }}</p>
     </div>
@@ -55,6 +59,13 @@ const submitForm = () => {
     .submit-btn {
         margin-top: 10px;
     }
+}
+
+.waiting-message
+{
+    color: #333;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
 .success-message
