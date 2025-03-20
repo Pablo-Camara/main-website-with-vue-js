@@ -15,6 +15,7 @@ const props = defineProps(['title', 'subtitle']);
         background-color: white;
         padding: 10px;
         text-align: center;
+        margin-bottom: 20px;
     }
 
     .header-box h1 {

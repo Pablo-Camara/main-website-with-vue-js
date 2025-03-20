@@ -2,6 +2,7 @@
 import { useRouter } from 'vue-router';
 import HeaderBox from '@/components/HeaderBox.vue';
 import LatestPosts from '@/components/LatestPosts.vue';
+import BaseButton from '@/components/BaseComponents/BaseButton.vue';
 
 const router = useRouter();
 
@@ -18,8 +19,8 @@ const goToRegisterPage = () => {
     <HeaderBox title="Welcome" subtitle="Simplicity is the ultimate sophistication." />
 
     <div class="authentication">
-        <button class="white-btn login-btn" @click="goToLoginPage">Login</button>
-        <button class="white-btn" @click="goToRegisterPage">Register</button>
+        <BaseButton variant="login-btn" @click="goToLoginPage">Login</BaseButton>
+        <BaseButton @click="goToRegisterPage">Register</BaseButton>
     </div>
 
     <LatestPosts />
@@ -31,18 +32,7 @@ const goToRegisterPage = () => {
         text-align: center;
     }
 
-    .white-btn {
-        background-color: #ffffff;
-        color: #000000;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        margin-top: 10px;
-    }
-
-    .white-btn:hover {
-        background-color: #00ff00;
-    }
+    
 
     .login-btn {
         margin-right: 10px;
