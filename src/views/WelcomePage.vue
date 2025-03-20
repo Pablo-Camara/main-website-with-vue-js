@@ -31,9 +31,7 @@ const goToRegisterPage = () => {
     .authentication {
         text-align: center;
     }
-
     
-
     .login-btn {
         margin-right: 10px;
     }
