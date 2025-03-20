@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps, computed } from 'vue';
-const props = defineProps(['label', 'id', 'type', 'placeholder', 'modelValue']);
+const props = defineProps(['label', 'id', 'type', 'placeholder', 'modelValue', 'disableClipboard']);
 const emit = defineEmits(['update:modelValue']);
 
 const inputValue = computed({
@@ -8,11 +8,20 @@ const inputValue = computed({
   set: (value) => emit('update:modelValue', value)
 });
 
+const handleClipboard = (event) => {
+    if (props.disableClipboard) {
+        event.preventDefault();
+    }
+};
+
 </script>
 
 <template>
     <label :for="id">{{ label }}</label><br/>
-    <input :id="id" :type="type" :placeholder="placeholder" v-model="inputValue"/>
+    <input :id="id" :type="type" :placeholder="placeholder" v-model="inputValue" 
+        @paste="handleClipboard" 
+        @copy="handleClipboard" 
+        @cut="handleClipboard"/>
 </template>
 
 <style scoped>
