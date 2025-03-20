@@ -1,6 +1,12 @@
 <script setup>
 import BaseButton from '@/components/BaseComponents/BaseButton.vue';
 import HeaderBox from '@/components/HeaderBox.vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const goHome = () => {
+    router.push('/');
+}
 </script>
 
 <template>
@@ -14,7 +20,7 @@ import HeaderBox from '@/components/HeaderBox.vue';
         <input id="password" type="password" placeholder="Password" />
         <br/><br/>
         <BaseButton variant="mr-10">Login</BaseButton>
-        <BaseButton variant="red-alert">Back</BaseButton>
+        <BaseButton variant="red-alert" @click="goHome">Back</BaseButton>
     </div>
 </template>
 
