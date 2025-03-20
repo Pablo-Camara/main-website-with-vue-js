@@ -3,18 +3,15 @@ import { useRouter } from 'vue-router';
 import BaseInput from '@/components/BaseComponents/BaseInput.vue';
 import BaseButton from '@/components/BaseComponents/BaseButton.vue';
 import HeaderBox from '@/components/HeaderBox.vue';
+import { useNavigation } from '@/utils/routerUtils';
 
-
-const router = useRouter();
-const goHome = () => {
-    router.push('/');
-}
+const { goHome } = useNavigation();
 </script>
 
 <template>
     <HeaderBox title="Login" subtitle="Please log in to access your account" />
 
-    <div class="login-form">
+    <div class="form-box">
         <BaseInput label="Email" id="email" type="email" placeholder="your@email.com" />
         <br/><br/>
         <BaseInput label="Password" id="password" type="password" placeholder="***********"/>
@@ -25,13 +22,6 @@ const goHome = () => {
 </template>
 
 <style scoped>
-    .login-form {
-        max-width: 300px;
-        margin: auto;
-        margin-top: 40px;
-        color: #ffffff;
-    }
-
     .mr-10 {
         margin-right: 10px;
     }

@@ -3,16 +3,10 @@ import { useRouter } from 'vue-router';
 import HeaderBox from '@/components/HeaderBox.vue';
 import LatestPosts from '@/components/LatestPosts.vue';
 import BaseButton from '@/components/BaseComponents/BaseButton.vue';
+import { useNavigation } from '@/utils/routerUtils';
 
-const router = useRouter();
+const { goToLoginPage, goToRegisterPage } = useNavigation();
 
-const goToLoginPage = () => {
-    router.push('/login');
-}
-
-const goToRegisterPage = () => {
-    router.push('/register');
-}
 </script>
 
 <template>
@@ -31,7 +25,7 @@ const goToRegisterPage = () => {
     .authentication {
         text-align: center;
     }
-    
+
     .login-btn {
         margin-right: 10px;
     }
