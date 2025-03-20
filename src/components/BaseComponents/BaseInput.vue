@@ -1,11 +1,18 @@
 <script setup>
-import { defineProps } from 'vue';
-const props = defineProps(['label', 'id', 'type', 'placeholder']);
+import { defineProps, computed } from 'vue';
+const props = defineProps(['label', 'id', 'type', 'placeholder', 'modelValue']);
+const emit = defineEmits(['update:modelValue']);
+
+const inputValue = computed({
+  get: () => props.modelValue,
+  set: (value) => emit('update:modelValue', value)
+});
+
 </script>
 
 <template>
     <label :for="id">{{ label }}</label><br/>
-    <input :id="id" :type="type" :placeholder="placeholder" />
+    <input :id="id" :type="type" :placeholder="placeholder" v-model="inputValue"/>
 </template>
 
 <style scoped>
