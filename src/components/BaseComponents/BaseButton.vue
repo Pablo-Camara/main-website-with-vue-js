@@ -30,7 +30,7 @@ export default {
         background-color: #00ff00;
     }
 
-    .btn.red-alert:hover {
+    .btn.red-alert {
         background-color: #ff0000;
         color: #ffffff;
     }
