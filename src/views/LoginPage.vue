@@ -29,9 +29,3 @@ const login = () => {
         <BaseButton variant="red-alert" @click="goHome">Back</BaseButton>
     </div>
 </template>
-
-<style scoped>
-    .mr-10 {
-        margin-right: 10px;
-    }
-</style>
