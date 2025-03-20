@@ -8,8 +8,14 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: WelcomePage,
+      meta: { title: "Home - Pablo Câmara's Blog" }
     },
   ],
 })
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title ?? "Pablo Câmara's Blog";
+  next();
+});
 
 export default router
