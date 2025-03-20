@@ -10,6 +10,18 @@ const router = createRouter({
       component: WelcomePage,
       meta: { title: "Home - Pablo Câmara's Blog" }
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginPage.vue'),
+      meta: { title: "Login - Pablo Câmara's Blog" }
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/RegisterPage.vue'),
+      meta: { title: "Register - Pablo Câmara's Blog" }
+    }
   ],
 })
 

@@ -1,27 +1,49 @@
 <script setup>
-import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import HeaderBox from '@/components/HeaderBox.vue';
 
+const router = useRouter();
+
+const goToLoginPage = () => {
+    router.push('/login');
+}
+
+const goToRegisterPage = () => {
+    router.push('/register');
+}
 </script>
 
 <template>
-    <div class="welcome-box">
-        <h1>Welcome</h1>
-        <p>Simplicity is the ultimate sophistication.</p>
-    </div>
+    <HeaderBox title="Welcome" subtitle="Simplicity is the ultimate sophistication." />
 
     <div class="authentication">
-        <button class="white-btn login-btn">Login</button>
-        <button class="white-btn">Register</button>
+        <button class="white-btn login-btn" @click="goToLoginPage">Login</button>
+        <button class="white-btn" @click="goToRegisterPage">Register</button>
+    </div>
+
+    <div class="latest-posts">
+        <h2>Latest Posts</h2>
+    
+        <div class="latest-post">
+            <h3>Post Title</h3>
+            <p>Post Content</p>
+        </div>
+
+        <div class="latest-post">
+            <h3>Post Title 2</h3>
+            <p>Post Content 2</p>
+        </div>
+
+        <div class="latest-post">
+            <h3>Post Title 3</h3>
+            <p>Post Content 3</p>
+        </div>
     </div>
 </template>
 
 <style scoped>
 
-    .welcome-box {
-        background-color: white;
-        padding: 10px;
-        text-align: center;
-    }
+    
 
     .authentication {
         text-align: center;
@@ -42,5 +64,28 @@ import { ref } from 'vue';
 
     .login-btn {
         margin-right: 10px;
+    }
+
+    .latest-posts {
+        max-width: 300px;
+        margin: auto;
+        margin-top: 40px;
+    }
+
+    .latest-posts h2 {
+        color: #ffffff
+    }
+    
+
+    .latest-post h3 {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    .latest-post {
+        background-color: #ffffff;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
     }
 </style>
