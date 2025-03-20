@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 import BaseInput from '@/components/BaseComponents/BaseInput.vue';
 import BaseButton from '@/components/BaseComponents/BaseButton.vue';
 import HeaderBox from '@/components/HeaderBox.vue';
