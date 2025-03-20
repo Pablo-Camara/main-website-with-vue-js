@@ -13,7 +13,8 @@ import HeaderBox from '@/components/HeaderBox.vue';
         <label for="password">Password</label><br/>
         <input id="password" type="password" placeholder="Password" />
         <br/><br/>
-        <BaseButton>Login</BaseButton>
+        <BaseButton variant="mr-10">Login</BaseButton>
+        <BaseButton variant="red-alert">Back</BaseButton>
     </div>
 </template>
 
@@ -32,4 +33,7 @@ import HeaderBox from '@/components/HeaderBox.vue';
        margin-bottom: 10px;
    }
 
+    .mr-10 {
+        margin-right: 10px;
+    }
 </style>

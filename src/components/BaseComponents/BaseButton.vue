@@ -29,4 +29,9 @@ export default {
     .btn:hover {
         background-color: #00ff00;
     }
+
+    .btn.red-alert:hover {
+        background-color: #ff0000;
+        color: #ffffff;
+    }
 </style>
