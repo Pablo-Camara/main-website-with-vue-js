@@ -34,4 +34,8 @@ export default {
         background-color: #ff0000;
         color: #ffffff;
     }
+
+    .btn.full {
+        width: 100%;
+    }
 </style>

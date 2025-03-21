@@ -51,7 +51,8 @@ const setNewsletterConfirm = (value) => {
         <br/><br/>
         <BaseCoregBinary text="Do you agree to receive news and updates via email?" :confirmed="newsletterConfirm" @confirm="setNewsletterConfirm" />
         <br/><br/>
-        <BaseButton variant="mr-10" @click="register">Register</BaseButton>
+
+        <BaseButton variant="mb-10 full" @click="register">Register</BaseButton>
         <BaseButton variant="red-alert" @click="goHome">Back</BaseButton>
     </div>
 </template>
