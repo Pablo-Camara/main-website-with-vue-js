@@ -5,6 +5,11 @@
     color: #ffffff;
 }
 
+.error {
+    color: red;
+    font-size: 14px;
+}
+
 
 .mr-10 {
     margin-right: 10px;
