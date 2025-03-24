@@ -13,7 +13,7 @@ const { goToLoginPage, goToRegisterPage } = useNavigation();
     <HeaderBox title="Welcome" subtitle="Simplicity is the ultimate sophistication." />
 
     <div class="authentication">
-        <BaseButton variant="login-btn" @click="goToLoginPage">Login</BaseButton>
+        <BaseButton class="login-btn" @click="goToLoginPage">Login</BaseButton>
         <BaseButton @click="goToRegisterPage">Register</BaseButton>
     </div>
 

@@ -25,7 +25,7 @@ const login = () => {
         <br/><br/>
         <BaseInput v-model="password" label="Password" id="password" type="password" placeholder="***********"/>
         <br/><br/>
-        <BaseButton variant="mr-10" @click="login">Login</BaseButton>
-        <BaseButton variant="red-alert" @click="goHome">Back</BaseButton>
+        <BaseButton class="mr-10" @click="login">Login</BaseButton>
+        <BaseButton class="red-alert" @click="goHome">Back</BaseButton>
     </div>
 </template>

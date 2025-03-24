@@ -1,21 +1,9 @@
 <template>
     <button 
-        :class="['btn', variant]" 
-        @click="$emit('click')">
+        class="btn">
         <slot></slot>    
     </button>
 </template>
-
-<script>
-export default {
-  inheritAttrs: false,
-  props: {
-    variant: {
-      type: String,
-    }
-  }
-};
-</script>
 
 
 <style scoped>
