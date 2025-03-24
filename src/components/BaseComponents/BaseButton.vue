@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  inheritAttrs: false,
   props: {
     variant: {
       type: String,
