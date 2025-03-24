@@ -1,7 +1,10 @@
 <script setup>
-import { defineProps, computed } from 'vue';
-const props = defineProps(['label', 'id', 'type', 'placeholder', 'modelValue', 'disableClipboard']);
+import { computed } from 'vue';
+const props = defineProps(['label', 'id', 'type', 'placeholder', 'modelValue', 'disableClipboard', 'error']);
 const emit = defineEmits(['update:modelValue']);
+defineOptions({
+  inheritAttrs: false
+})
 
 const inputValue = computed({
   get: () => props.modelValue,
@@ -22,6 +25,7 @@ const handleClipboard = (event) => {
         @paste="handleClipboard" 
         @copy="handleClipboard" 
         @cut="handleClipboard"/>
+    <p class="error-message" v-if="error">{{ error }}</p>
 </template>
 
 <style scoped>
@@ -31,5 +35,11 @@ const handleClipboard = (event) => {
        margin-top: 5px;
        margin-bottom: 10px;
        box-sizing: border-box;
+   }
+
+   .error-message {
+       color: red;
+       font-size: 14px;
+       margin-top: 0;
    }
 </style>
