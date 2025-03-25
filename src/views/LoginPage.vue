@@ -18,9 +18,11 @@ const somethingWentWrong = () => {
 }
 
 const login = () => {
-    console.log(email.value);
-    console.log(password.value);
-    console.log("Fetching data...");
+    if(!email.value || !password.value) {
+        genericError.value = 'Please fill in your credentials.';
+        return;
+    };
+
     fetch(apiConfig.BASE_URL + '/api/login.php', {
         method: 'POST',
         headers: {
