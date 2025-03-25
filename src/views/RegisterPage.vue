@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import { useNavigation } from '@/utils/routerUtils';
 import HeaderBox from '@/components/HeaderBox.vue';
 import BaseInput from '@/components/BaseComponents/BaseInput.vue';
@@ -11,12 +11,12 @@ const { goHome } = useNavigation();
 
 const genericError = ref(null);
 
-const firstName = ref(null);
-const lastName = ref(null);
-const email = ref(null);
-const emailConfirm = ref(null);
-const password = ref(null);
-const passwordConfirm = ref(null);
+const firstName = ref('');
+const lastName = ref('');
+const email = ref('');
+const emailConfirm = ref('');
+const password = ref('');
+const passwordConfirm = ref('');
 const newsletterConfirm = ref(true);
 
 const setNewsletterConfirm = (value) => {
