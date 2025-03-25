@@ -23,7 +23,7 @@ const setNewsletterConfirm = (value) => {
     newsletterConfirm.value = value ? true : false;
 };
 
-const formErrors = [];
+const formErrors = reactive({});
 
 const somethingWentWrong = () => {
     genericError.value = 'Something went wrong. Could not register.';
