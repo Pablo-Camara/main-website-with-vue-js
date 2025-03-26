@@ -19,5 +19,9 @@ export function useNavigation() {
         router.push('/register');
     }
 
-    return { goHome, goToLoginPage, goToRegisterPage, goTo };
+    const goToMyAccountPage = () => {
+        router.push('/my-account');
+    }
+
+    return { goTo, goHome, goToLoginPage, goToRegisterPage, goToMyAccountPage };
 }

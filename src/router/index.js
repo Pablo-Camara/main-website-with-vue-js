@@ -21,6 +21,12 @@ const router = createRouter({
       name: 'register',
       component: () => import('../views/RegisterPage.vue'),
       meta: { title: "Register - Pablo Câmara's Blog" }
+    },
+    {
+      path: '/my-account',
+      name: 'my-account',
+      component: () => import('../views/MyAccount.vue'),
+      meta: { title: "My Account - Pablo Câmara's Blog" }
     }
   ],
 })
