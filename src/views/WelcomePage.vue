@@ -12,7 +12,7 @@ const { goToLoginPage, goToRegisterPage } = useNavigation();
 <template>
     <HeaderBox title="Welcome" subtitle="Simplicity is the ultimate sophistication." />
 
-    <div class="authentication">
+    <div class="text-center">
         <BaseButton class="login-btn" @click="goToLoginPage">Login</BaseButton>
         <BaseButton @click="goToRegisterPage">Register</BaseButton>
     </div>
@@ -21,10 +21,6 @@ const { goToLoginPage, goToRegisterPage } = useNavigation();
 </template>
 
 <style scoped>
-
-    .authentication {
-        text-align: center;
-    }
 
     .login-btn {
         margin-right: 10px;
