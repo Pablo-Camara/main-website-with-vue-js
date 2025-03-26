@@ -19,8 +19,8 @@ const { user } = storeToRefs(authStore);
         <div v-if="user.email_confirmed !== null">
             <h2>Email confirmation status:</h2>
             <p class="color-green mb-2" v-if="user.email_confirmed">Email confirmed</p>
-            <p class="color-red mt-0" v-else>Email not confirmed yet</p>
-            <p class="color-white">{{ user.email }}</p>
+            <p class="color-red mt-2" v-else>Email not confirmed yet</p>
+            <p class="color-white mt-0">{{ user.email }}</p>
         </div>
     </div>
 </template>
