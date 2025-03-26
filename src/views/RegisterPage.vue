@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, watch } from 'vue';
+import { ref, reactive, watch, onMounted } from 'vue';
 import { useNavigation } from '@/utils/useNavigation';
 import HeaderBox from '@/components/HeaderBox.vue';
 import BaseInput from '@/components/BaseComponents/BaseInput.vue';
@@ -36,6 +36,12 @@ watch(() => authStore.isAuthenticated, (newValue) => {
   if (newValue) {
     goToMyAccountPage();
   }
+});
+
+onMounted(() => {
+    if (authStore.isAuthenticated) {
+        goToMyAccountPage();
+    }
 });
 
 const register = () => {
