@@ -1,12 +1,15 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import BaseInput from '@/components/BaseComponents/BaseInput.vue';
 import BaseButton from '@/components/BaseComponents/BaseButton.vue';
 import HeaderBox from '@/components/HeaderBox.vue';
 import { useNavigation } from '@/utils/useNavigation';
 import { apiConfig } from '@/config/api';
+import { useAuthStore } from '@/stores/useAuthStore';
 
-const { goHome } = useNavigation();
+const authStore = useAuthStore();
+
+const { goHome, goToMyAccountPage } = useNavigation();
 
 const email = ref(null);
 const password = ref(null);
@@ -16,6 +19,18 @@ const genericError = ref(null);
 const somethingWentWrong = () => {
     genericError.value = 'Something went wrong. Could not login.';
 }
+
+onMounted(() => {
+    if (authStore.isAuthenticated) {
+        goToMyAccountPage();
+    }
+});
+
+watch(() => authStore.isAuthenticated, (newValue) => {
+  if (newValue) {
+    goToMyAccountPage();
+  }
+});
 
 const login = () => {
     if(!email.value || !password.value) {
@@ -45,6 +60,7 @@ const login = () => {
             genericError.value = data.message ?? 'Something went wrong, could not login.';
             return;
         }
+        authStore.checkAuth();
     })
     .catch(error => {
         somethingWentWrong();
