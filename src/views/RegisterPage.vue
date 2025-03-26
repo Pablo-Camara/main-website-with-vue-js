@@ -1,14 +1,17 @@
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, watch } from 'vue';
 import { useNavigation } from '@/utils/useNavigation';
 import HeaderBox from '@/components/HeaderBox.vue';
 import BaseInput from '@/components/BaseComponents/BaseInput.vue';
 import BaseButton from '@/components/BaseComponents/BaseButton.vue';
 import BaseCoregBinary from '@/components/BaseComponents/BaseCoregBinary.vue';
 import { apiConfig } from '@/config/api';
+import { useAuthStore } from '@/stores/useAuthStore';
 
-const { goHome } = useNavigation();
+const { goHome, goToMyAccountPage } = useNavigation();
+const authStore = useAuthStore();
 
+const successRegister = ref(false);
 const genericError = ref(null);
 
 const firstName = ref('');
@@ -28,6 +31,12 @@ const formErrors = reactive({});
 const somethingWentWrong = () => {
     genericError.value = 'Something went wrong. Could not register.';
 }
+
+watch(() => authStore.isAuthenticated, (newValue) => {
+  if (newValue) {
+    goToMyAccountPage();
+  }
+});
 
 const register = () => {
     const formData = new FormData();
@@ -52,10 +61,17 @@ const register = () => {
     })  // Change to .json() if the response is JSON
     .then(data => {
         if (data.success == false) {
+            if(data.errors.length === 0) {
+                genericError.value = 'Something went wrong. Could not register.';
+                return;
+            }
             genericError.value = 'Please fix form errors above';
             formErrors.value = data.errors;
-        }
-        console.log(data)
+            return;
+        } 
+        formErrors.value = {};
+        successRegister.value = 'Registration successful! Logging in...';
+        authStore.checkAuth();
     })
     .catch(error => {
         somethingWentWrong();
@@ -95,6 +111,7 @@ const register = () => {
             @confirm="setNewsletterConfirm" />
         <br /><br />
         <p class="error" v-if="genericError">{{ genericError }}</p>
+        <p class="color-green" v-if="successRegister">{{ successRegister }}</p>
         <BaseButton class="mb-10 full" @click="register">Register</BaseButton>
         <BaseButton class="red-alert" @click="goHome">Back</BaseButton>
     </div>
