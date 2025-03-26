@@ -1,6 +1,6 @@
 <script setup>
 import { ref, reactive } from 'vue';
-import { useNavigation } from '@/utils/routerUtils';
+import { useNavigation } from '@/utils/useNavigation';
 import HeaderBox from '@/components/HeaderBox.vue';
 import BaseInput from '@/components/BaseComponents/BaseInput.vue';
 import BaseButton from '@/components/BaseComponents/BaseButton.vue';

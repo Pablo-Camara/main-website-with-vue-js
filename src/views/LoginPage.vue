@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import BaseInput from '@/components/BaseComponents/BaseInput.vue';
 import BaseButton from '@/components/BaseComponents/BaseButton.vue';
 import HeaderBox from '@/components/HeaderBox.vue';
-import { useNavigation } from '@/utils/routerUtils';
+import { useNavigation } from '@/utils/useNavigation';
 import { apiConfig } from '@/config/api';
 
 const { goHome } = useNavigation();
