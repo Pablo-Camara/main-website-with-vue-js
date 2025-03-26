@@ -6,8 +6,7 @@ import { useAuthStore } from '@/stores/useAuthStore';
 import { storeToRefs } from 'pinia';
 
 const authStore = useAuthStore();
-const { first_name, last_name, email,
-     newsletter_consent, email_confirmed } = storeToRefs(authStore);
+const { user } = storeToRefs(authStore);
 
 </script>
 
@@ -15,11 +14,11 @@ const { first_name, last_name, email,
     <HeaderBox title="My Account" subtitle="Manage your profile and settings." />
 
     <div class="my-account">
-        <p class="color-white text-center">Welcome,<br/>{{ first_name }} {{ last_name }}</p>
+        <p class="color-white text-center">Welcome,<br/>{{ user.first_name }} {{ user.last_name }}</p>
 
-        <div v-if="email_confirmed !== null">
+        <div v-if="user.email_confirmed !== null">
             <h2>Email confirmation status:</h2>
-            <p class="color-green" v-if="email_confirmed">Email confirmed</p>
+            <p class="color-green" v-if="user.email_confirmed">Email confirmed</p>
             <p class="color-red" v-else>Email not confirmed yet</p>
         </div>
     </div>
