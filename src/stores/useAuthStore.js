@@ -9,7 +9,8 @@ export const useAuthStore = defineStore('auth', {
         first_name: null,
         last_name: null,
         email: null,
-        newsletter_consent: null
+        newsletter_consent: null,
+        email_confirmed: null
     },
   }),
   actions: {

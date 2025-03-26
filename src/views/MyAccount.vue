@@ -2,23 +2,24 @@
 import { ref } from 'vue';
 import { onMounted } from 'vue';
 import HeaderBox from '@/components/HeaderBox.vue';
+import { useAuthStore } from '@/stores/useAuthStore';
+import { storeToRefs } from 'pinia';
 
-const emailConfirmed = ref(null);
+const authStore = useAuthStore();
+const { first_name, last_name, email,
+     newsletter_consent, email_confirmed } = storeToRefs(authStore);
 
-onMounted(() => {
-    //TODO: fetch user data from the server
-});
 </script>
 
 <template>
     <HeaderBox title="My Account" subtitle="Manage your profile and settings." />
 
     <div class="my-account">
-        <p class="color-white text-center">Welcome,<br/>Pablo Câmara</p>
+        <p class="color-white text-center">Welcome,<br/>{{ first_name }} {{ last_name }}</p>
 
-        <div v-if="emailConfirmed !== null">
+        <div v-if="email_confirmed !== null">
             <h2>Email confirmation status:</h2>
-            <p class="color-green" v-if="emailConfirmed">Email confirmed</p>
+            <p class="color-green" v-if="email_confirmed">Email confirmed</p>
             <p class="color-red" v-else>Email not confirmed yet</p>
         </div>
     </div>
